@@ -1,15 +1,21 @@
 #!/bin/bash
 
 echo "Installing basic software..."
-sudo pacman -S \
+sudo pacman -S --needed \
+  7zip \
   bat \
+  bitwarden \
+  btop \
+  chezmoi \
   exa \
   firefox \
+  flatpak \
   fzf \
+  git \
   geany \
-  htop \
+  neovim \
+  pavucontrol \
   okular \
-  starship \
   vlc
 
 # extra software
@@ -21,18 +27,25 @@ if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 fi
 echo "Installing extra software..."
 
-sudo pacman -S \
+sudo pacman -S --needed \
   bleachbit \
   clamav \
   code \
   diffuse \
-  exa \
-  firefox \
+  distrobox \
   inkscape \
   kleopatra \
+  lazygit \
+  libreoffice-still \
+  man-db \
+  man-pages \
   qbittorrent \
+  obsidian \
+  openssh \
+  podman-desktop \
   rclone \
   remmina \
+  rsync \
   sqlitebrowser \
   steam \
   tailscale \
