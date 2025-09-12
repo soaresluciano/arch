@@ -2,12 +2,18 @@
 
 pacman -S --needed \
     hyprland \
+    uwsm \
+    xdg-desktop-portal \
     xdg-desktop-portal-hyprland \
+    polkit \
     hyprpolkitagent \
     qt5-wayland \
     qt6-wayland \
     qt6-multimedia-ffmpeg \
     pipewire \
+    pipewire-alsa \
+    pipewire-pulse \
+    pipewire-jack \
     wireplumber \
     nwg-look \
     hyprpaper \
@@ -17,7 +23,20 @@ pacman -S --needed \
     kitty \
     wofi \
     dolphin \
-    dunst
+    dunst \
+    adwaita-fonts \
+    adwaita-icon-theme \
+    adwaita-cursors \
+    libva \
+    libvdpau \
+    mesa \
+    fuse3 \
+    fuse-common \
+    x264 \
+    x265 \
+    bluez \
+    bluez-utils \
+    xorg-wayland
 
 CONFIG_FILE="$HOME/.config/hypr/hyprland.conf"
 
