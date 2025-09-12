@@ -33,7 +33,7 @@ echo "$hostname" > /etc/hostname
 
 # EXTRA - Install necessary packages
 new_step "Installing necessary packages"
-pacman -S --needed --noconfirm \
+pacman -S --needed \
     grub \
     efibootmgr \
     networkmanager \
