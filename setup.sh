@@ -46,14 +46,11 @@ pacman -S --needed --noconfirm \
     networkmanager \
     base-devel \
     sudo \
-    vim \
+    neovim \
     curl \
     wget \
-    which \
-    less \
-    awk \
-    sed \
-    grep \
+    iw \
+    wpa_supplicant \
     findutils \
 
 # 3.5 - Root password
