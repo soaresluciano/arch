@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pacman -S --needed \
+sudo pacman -S --needed \
     hyprland \
     uwsm \
     xdg-desktop-portal \
@@ -67,8 +67,10 @@ cat <<'EOF' >> "$CONFIG_FILE"
 
 env=QT_QPA_PLATFORMTHEME=hyprqt6engine
 
-exec-once = systemctl --user start hyprpolkitagent
-exec-once = udiskie
-exec-once = waybar
+#exec-once = systemctl --user start hyprpolkitagent
+exec-once = uwsm app -- udiskie
+exec-once = uwsm app -- waybar
 
 EOF
+
+sudo systemctl --user enable --now hyprpolkitagent.service
