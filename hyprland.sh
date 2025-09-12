@@ -3,9 +3,7 @@
 sudo pacman -S --needed \
     hyprland \
     uwsm \
-    xdg-desktop-portal \
     xdg-desktop-portal-hyprland \
-    polkit \
     hyprpolkitagent \
     qt5-wayland \
     qt6-wayland \
@@ -24,19 +22,10 @@ sudo pacman -S --needed \
     wofi \
     dolphin \
     dunst \
-    adwaita-fonts \
-    adwaita-icon-theme \
-    adwaita-cursors \
-    libva \
-    libvdpau \
-    mesa \
     fuse3 \
     fuse-common \
-    x264 \
-    x265 \
     bluez \
-    bluez-utils \
-    xorg-wayland
+    bluez-utils
 
 CONFIG_FILE="$HOME/.config/hypr/hyprland.conf"
 
