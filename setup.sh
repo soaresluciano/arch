@@ -51,7 +51,7 @@ pacman -S --needed --noconfirm \
     wget \
     iw \
     wpa_supplicant \
-    findutils \
+    findutils
 
 # 3.5 - Root password
 new_step "Setting root password"
