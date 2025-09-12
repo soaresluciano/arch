@@ -1,13 +1,16 @@
 #!/bin/bash
 
-flatpak install cc.arduino.IDE2 #Arduino IDE v2 
-flatpak install com.anydesk.Anydesk #AnyDesk
-flatpak install com.bitwarden.desktop #Bitwarden
-flatpak install com.heroicgameslauncher.hgl #Heroic Games Launcher
-flatpak install com.usebottles.bottles #Bottles
-flatpak install io.github.peazip.PeaZip #PeaZip
-flatpak install io.podman_desktop.PodmanDesktop #Podman Desktop
-flatpak install md.obsidian.Obsidian #Obsidian
-flatpak install net.davidotek.pupgui2 #ProtonUp-Qt
-flatpak install org.localsend.localsend_app #KeyStore Explorer
-flatpak install org.localsend.localsend_app #LocalSend
+flatpak install flathub \
+	cc.arduino.IDE2 \ #Arduino IDE v2
+	com.anydesk.Anydesk \ #AnyDesk
+	com.bitwarden.desktop \ #Bitwarden
+	com.heroicgameslauncher.hgl \ #Heroic Games Launcher
+	com.usebottles.bottles \ #Bottles
+	com.github.tchx84.Flatseal \ #Flatseal
+	io.github.peazip.PeaZip \ #PeaZip
+	ua.org.brezblock.q4wine \ #Q4Wine
+	io.podman_desktop.PodmanDesktop \ #Podman Desktop
+	md.obsidian.Obsidian \ #Obsidian
+	net.davidotek.pupgui2 \ #ProtonUp-Qt
+  org.keystore_explorer.KeyStoreExplorer \ #KeyStore Explorer
+	org.localsend.localsend_app \ #LocalSend
