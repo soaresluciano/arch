@@ -1,13 +1,13 @@
 # https://wiki.archlinux.org/title/Installation_guide
 
-function pause(){
+function pause() {
     echo -n "Press any key to continue..."
     read -n 1 -s
 }
 
-function new_step(title){
+function new_step() {
     echo "----------------------------------------"
-    echo $title
+    echo $1
     echo "----------------------------------------"
     pause
 }
