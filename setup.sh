@@ -31,13 +31,6 @@ new_step "Configuring network"
 read -p "Enter your hostname (e.g., archlinux): " hostname
 echo "$hostname" > /etc/hostname
 
-# new_step "Setting up hosts file"
-# cat << EOF > /etc/hosts
-# 127.0.0.1       localhost
-# ::1             localhost
-# 127.0.0.1       archlinux
-# EOF
-
 # EXTRA - Install necessary packages
 new_step "Installing necessary packages"
 pacman -S --needed --noconfirm \
