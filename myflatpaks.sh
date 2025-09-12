@@ -12,5 +12,5 @@ flatpak install flathub \
 	io.podman_desktop.PodmanDesktop \ #Podman Desktop
 	md.obsidian.Obsidian \ #Obsidian
 	net.davidotek.pupgui2 \ #ProtonUp-Qt
-  org.keystore_explorer.KeyStoreExplorer \ #KeyStore Explorer
+	org.keystore_explorer.KeyStoreExplorer \ #KeyStore Explorer
 	org.localsend.localsend_app \ #LocalSend
