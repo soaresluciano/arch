@@ -21,11 +21,15 @@ sudo pacman -S --needed \
     kitty \
     wofi \
     dolphin \
-    dunst \
+    swaync \
     fuse3 \
     fuse-common \
     bluez \
     bluez-utils
+
+# Enable ly
+sudo systemctl enable ly.service
+systemctl disable getty@tty2.service
 
 CONFIG_FILE="$HOME/.config/hypr/hyprland.conf"
 
