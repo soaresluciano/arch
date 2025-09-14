@@ -1,4 +1,5 @@
 #!/bin/bash
 
-yay -S \
+brew install \
+    gh \
     topgrade

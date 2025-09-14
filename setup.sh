@@ -44,10 +44,12 @@ pacman -S --needed \
     wget \
     iw \
     wpa_supplicant \
+    crda \
     findutils \
+    git \
+    rsync \
     man-db \
-    man-pages \
-    rsync
+    man-pages
 
 # 3.5 - Root password
 new_step "Setting root password"
