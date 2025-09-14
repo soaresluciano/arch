@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo pacman -S --needed \
     zsh \
     zsh-autosuggestions \

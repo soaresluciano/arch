@@ -11,5 +11,4 @@ sudo pacman -S --needed \
     ttf-liberation \
     ttf-dejavu \
     adobe-source-sans-fonts \
-    adobe-source-serif-fonts \
-    ttf-inter
+    adobe-source-serif-fonts

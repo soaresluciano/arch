@@ -11,11 +11,9 @@ sudo pacman -S --needed \
   firefox \
   flatpak \
   fzf \
-  git \
-  geany \
-  neovim \
+  fwupd \
+  gnome-firmware \
   pavucontrol \
-  okular \
   vlc
 
 # extra software
@@ -33,19 +31,17 @@ sudo pacman -S --needed \
   code \
   diffuse \
   distrobox \
+  geany \
   inkscape \
   kleopatra \
   lazygit \
   libreoffice-still \
-  man-db \
-  man-pages \
   qbittorrent \
   obsidian \
   openssh \
   podman-desktop \
   rclone \
   remmina \
-  rsync \
   sqlitebrowser \
   steam \
   tailscale \

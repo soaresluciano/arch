@@ -1,6 +1,5 @@
 #!/bin/bash
 
-sudo pacman -Syu
 sudo pacman -S --needed base-devel procps-ng curl file git
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
