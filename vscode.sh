@@ -1,5 +1,7 @@
 #!/bin/bash
 
+flatpak install flathub com.visualstudio.code
+
 FILE=~/.vscode/argv.json
 
 if [ -f "$FILE" ]; then
