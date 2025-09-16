@@ -28,7 +28,6 @@ echo "Installing extra software..."
 sudo pacman -S --needed \
   bleachbit \
   clamav \
-  code \
   diffuse \
   distrobox \
   geany \
