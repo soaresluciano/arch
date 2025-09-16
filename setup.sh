@@ -34,7 +34,8 @@ new_step "Installing necessary packages"
 pacman -S --needed \
     grub \
     efibootmgr \
-    os-prober
+    os-prober \
+    git
 
 # 3.5 - Root password
 new_step "Setting root password"
