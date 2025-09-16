@@ -1,1 +1,1 @@
-install: https://rb.gy/czsjwb
+install: curl -L -O https://rb.gy/czsjwb
