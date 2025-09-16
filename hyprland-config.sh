@@ -35,4 +35,4 @@ exec-once = uwsm app -- swaync
 
 EOF
 
-sudo systemctl --user enable --now hyprpolkitagent.service
+systemctl --user enable --now hyprpolkitagent.service
