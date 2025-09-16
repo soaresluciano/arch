@@ -1,4 +1,4 @@
-sudo pacman -S --needed \
+sudo pacman -S --noconfirm  --needed \
     ttf-roboto-mono-nerd \
     ttf-firacode-nerd \
     ttf-jetbrains-mono-nerd \
