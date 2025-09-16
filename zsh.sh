@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo pacman -S --needed \
+sudo pacman -S --noconfirm --needed \
     zsh \
     zsh-autosuggestions \
     zsh-syntax-highlighting \
