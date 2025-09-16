@@ -34,20 +34,6 @@ new_step "Installing necessary packages"
 pacman -S --needed \
     grub \
     efibootmgr \
-    networkmanager \
-    base-devel \
-    sudo \
-    neovim \
-    curl \
-    wget \
-    iw \
-    wpa_supplicant \
-    crda \
-    findutils \
-    git \
-    rsync \
-    man-db \
-    man-pages \
     os-prober
 
 # 3.5 - Root password
