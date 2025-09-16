@@ -62,7 +62,7 @@ read -p "Is your ESP mounted at /boot (or /boot/efi)? (y/N): " esp_mounted
 
 if [[ "$esp_mounted" == "y" || "$esp_mounted" == "Y" ]]; then
     # Install GRUB to the ESP, create boot entry "GRUB"
-    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+    grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB
 
     # Enable os-prober in GRUB configuration so Windows is detected
     if ! grep -q "^GRUB_DISABLE_OS_PROBER=false" /etc/default/grub; then
