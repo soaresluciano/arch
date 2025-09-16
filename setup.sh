@@ -13,9 +13,7 @@ function new_step() {
 }
 
 # 3.3 - Time
-new_step "Setting up time zone and localization"
-read -p "Enter your time zone (e.g., Europe/Amsterdam): " timezone
-ln -sf /usr/share/zoneinfo/$timezone /etc/localtime
+ln -sf /usr/share/zoneinfo/Europe/Amsterdam /etc/localtime
 hwclock --systohc
 
 # 3.4 - Localization
@@ -49,7 +47,8 @@ pacman -S --needed \
     git \
     rsync \
     man-db \
-    man-pages
+    man-pages \
+    os-prober
 
 # 3.5 - Root password
 new_step "Setting root password"
@@ -72,13 +71,29 @@ systemctl enable NetworkManager
 
 # 3.8 - Boot loader
 new_step "Installing and configuring GRUB bootloader"
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB --removable
-grub-mkconfig -o /boot/grub/grub.cfg
+echo "Make sure your EFI System Partition (ESP) is mounted at /boot or /boot/efi before proceeding."
+read -p "Is your ESP mounted at /boot (or /boot/efi)? (y/N): " esp_mounted
+
+if [[ "$esp_mounted" == "y" || "$esp_mounted" == "Y" ]]; then
+    # Install GRUB to the ESP, create boot entry "GRUB"
+    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+
+    # Enable os-prober in GRUB configuration so Windows is detected
+    if ! grep -q "^GRUB_DISABLE_OS_PROBER=false" /etc/default/grub; then
+        echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
+    fi
+
+    # Generate GRUB config (includes Windows if detected)
+    grub-mkconfig -o /boot/grub/grub.cfg
+else
+    echo "Please mount your EFI System Partition and try again."
+    exit 1
+fi
 
 # 4 - Reboot
 new_step "Finalizing installation and rebooting"
 umount -R /mnt
 exit
 echo "Rebooting..."
-pause()
+pause
 reboot
