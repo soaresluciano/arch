@@ -1,12 +1,12 @@
 #!/bin/bash
 
 flatpak install flathub \
-	cc.arduino.IDE2 \ #Arduino IDE v2
-	com.anydesk.Anydesk \ #AnyDesk
-	com.heroicgameslauncher.hgl \ #Heroic Games Launcher
-	com.usebottles.bottles \ #Bottles
-	com.github.tchx84.Flatseal \ #Flatseal
-	ua.org.brezblock.q4wine \ #Q4Wine
-	net.davidotek.pupgui2 \ #ProtonUp-Qt
-	org.keystore_explorer.KeyStoreExplorer \ #KeyStore Explorer
-	org.localsend.localsend_app \ #LocalSend
+	cc.arduino.IDE2 \
+	com.anydesk.Anydesk \
+	com.heroicgameslauncher.hgl \
+	com.usebottles.bottles \
+	com.github.tchx84.Flatseal \
+	ua.org.brezblock.q4wine \
+	net.davidotek.pupgui2 \
+	org.keystore_explorer.KeyStoreExplorer \
+	org.localsend.localsend_app
