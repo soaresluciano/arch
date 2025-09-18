@@ -79,7 +79,7 @@ fi
 
 # 4 - Reboot
 new_step "Finalizing installation and rebooting"
-umount -R /mnt
+#umount -R /mnt
 exit
 echo "Rebooting..."
 pause
