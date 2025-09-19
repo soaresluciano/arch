@@ -1,6 +1,14 @@
 #!/bin/bash
 
-sudo pacman -S --needed base-devel procps-ng curl file git
+brew_deps=(
+    base-devel
+    procps-ng 
+    curl 
+    file 
+    git
+)
+
+sudo pacman -S --color always --needed "${brew_deps[@]}"
 
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 

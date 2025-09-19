@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo -n "Please enter your name: "
 read name
 git config --global user.name "$name"
