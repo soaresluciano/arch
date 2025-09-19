@@ -6,4 +6,6 @@ sudo pacman -S --needed \
   chezmoi \
   exa \
   flatpak \
-  fzf
+  fzf \
+  fwupd \
+  openssh
