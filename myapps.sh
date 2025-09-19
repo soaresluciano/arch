@@ -11,7 +11,5 @@ sudo pacman -S --needed \
   firefox \
   flatpak \
   fzf \
-  fwupd \
-  gnome-firmware \
-  pavucontrol \
-  vlc
+  pavucontrol
+  
