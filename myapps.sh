@@ -8,6 +8,7 @@ basic_apps=(
   fzf
   fwupd
   openssh
+  reflector
 )
 
 echo "Installing basic software..."
