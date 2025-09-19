@@ -1,4 +1,16 @@
-sudo pacman -S --needed nvim
+#!/bin/bash
+
+nvim_deps=(
+    nvim
+    git
+    curl
+    ripgrep
+    findutils
+    lazygit
+    luarocks
+)
+
+sudo pacman -S --color always --needed "${nvim_deps[@]}"
 
 # required
 mv ~/.config/nvim{,.bak}

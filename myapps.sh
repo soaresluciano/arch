@@ -1,11 +1,14 @@
 #!/bin/bash
 
-echo "Installing basic software..."
-sudo pacman -S --needed \
-  bat \
-  chezmoi \
-  exa \
-  flatpak \
-  fzf \
-  fwupd \
+basic_apps=(
+  bat
+  chezmoi
+  exa
+  flatpak
+  fzf
+  fwupd
   openssh
+)
+
+echo "Installing basic software..."
+sudo pacman -S --color always --needed "${basic_apps[@]}"

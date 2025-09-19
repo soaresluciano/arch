@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # https://wiki.archlinux.org/title/Installation_guide
 
 function pause() {
@@ -31,11 +33,14 @@ echo "$hostname" > /etc/hostname
 
 # EXTRA - Install necessary packages
 new_step "Installing necessary packages"
-pacman -S --needed \
-    grub \
-    efibootmgr \
-    os-prober \
-    git
+
+boot_manager_pkgs=(
+    grub
+    efibootmgr
+    os-prober
+)
+
+sudo pacman -S --color always --needed "${boot_manager_pkgs[@]}"
 
 # 3.5 - Root password
 new_step "Setting root password"
