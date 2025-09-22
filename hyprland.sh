@@ -75,6 +75,8 @@ filesystem_pkgs=(
 
 network_pkgs=(
     network-manager-applet
+    uwf
+    #guwf
 )
 
 packages=(
