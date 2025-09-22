@@ -40,8 +40,8 @@ gtk_pkgs=(
 )
 
 qt_pkgs=(
-    qt5-wayland
-    qt6-wayland
+    hyprland-qt-support
+    hyprqt6engine
     qt6-multimedia-ffmpeg
     kvantum
 )
