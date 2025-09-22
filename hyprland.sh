@@ -1,20 +1,37 @@
 #!/bin/bash
 
-core_pkgs=(
-    hyprland
-    uwsm
-    ly
-    xdg-desktop-portal-hyprland
-    hyprpolkitagent
-    swaync
+sys_pkgs=(
+   flatpak
+   fwupd
+   openssh
+   reflector
 )
 
-apps_pkgs=(
+session_pkgs=(
+    uwsm
+    ly
+)
+
+hyper_pkgs=(
+    hyprland
+    xdg-desktop-portal-hyprland
+    hyprpolkitagent
+)
+
+hypr_apps=(
     waybar
     kitty
     wofi
     nemo
     hyprpaper
+    swaync
+)
+
+basic_apps=(
+    bat
+    chezmoi
+    exa
+    fzf
 )
 
 gtk_pkgs=(
@@ -60,20 +77,12 @@ network_pkgs=(
     network-manager-applet
 )
 
-basic_apps=(
-  bat
-  chezmoi
-  exa
-  flatpak
-  fzf
-  fwupd
-  openssh
-  reflector
-)
-
 packages=(
-    "${core_pkgs[@]}" 
-    "${apps_pkgs[@]}" 
+    "${sys_pkgs[@]}" 
+    "${sessio_pkgs[@]}"
+    "${hyper_pkgs[@]}" 
+    "${hyper_apps[@]}" 
+    "${basic_apps[@]}" 
     "${gtk_pkgs[@]}" 
     "${qt_pkgs[@]}" 
     "${keyring_pkgs[@]}" 
