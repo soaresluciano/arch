@@ -64,7 +64,7 @@ sound_pkgs=(
 bluetooth_pkgs=(
     bluez
     bluez-utils
-    #blueman
+    blueman
 )
 
 filesystem_pkgs=(
@@ -76,7 +76,7 @@ filesystem_pkgs=(
 network_pkgs=(
     network-manager-applet
     uwf
-    #guwf
+    guwf
 )
 
 packages=(
