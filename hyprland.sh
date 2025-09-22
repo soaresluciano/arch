@@ -60,6 +60,17 @@ network_pkgs=(
     network-manager-applet
 )
 
+basic_apps=(
+  bat
+  chezmoi
+  exa
+  flatpak
+  fzf
+  fwupd
+  openssh
+  reflector
+)
+
 packages=(
     "${core_pkgs[@]}" 
     "${apps_pkgs[@]}" 
