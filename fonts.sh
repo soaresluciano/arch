@@ -1,6 +1,7 @@
 #!/bin/bash
 
 fonts=(
+    ttf-cascadia-code-nerd
     ttf-roboto-mono-nerd
     ttf-firacode-nerd
     ttf-jetbrains-mono-nerd
