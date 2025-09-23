@@ -17,3 +17,4 @@ fonts=(
 )
 
 sudo pacman -S --color always --needed "${fonts[@]}"
+fc-cache -fv
