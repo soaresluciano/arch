@@ -21,5 +21,6 @@ packages=(
 )
 
 for pkg in "${packages[@]}"; do
+  echo "=== Installing $pkg ==="
   sudo pacman -S --color always --needed "$pkg"
 done
