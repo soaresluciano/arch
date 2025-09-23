@@ -1,13 +1,15 @@
 #!/bin/bash
 
 nvim_deps=(
-    nvim
-    git
-    curl
-    ripgrep
-    findutils
-    lazygit
-    luarocks
+  nvim
+  git
+  curl
+  ripgrep
+  fd
+  findutils
+  lazygit
+  luarocks
+  unzip
 )
 
 sudo pacman -S --color always --needed "${nvim_deps[@]}"
