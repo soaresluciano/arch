@@ -143,6 +143,8 @@ echo -e "\n${GREEN}Mount verification:${NC}"
 df -h /mnt /mnt/boot
 
 # scripts
-curl -o https://raw.githubusercontent.com/soaresluciano/arch/refs/heads/main/setup.sh
+curl -L -O https://raw.githubusercontent.com/soaresluciano/arch/refs/heads/main/install.sh
+chmod +x setup.sh
+curl -L -O https://raw.githubusercontent.com/soaresluciano/arch/refs/heads/main/setup.sh
 chmod +x setup.sh
 
