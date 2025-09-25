@@ -72,13 +72,9 @@ pacstrap -K /mnt "${packages[@]}"
 new_step "Creating fstab"
 genfstab -U /mnt >> /mnt/etc/fstab
 
-# 3.2 Download setup script for chroot environment
-new_step "Downloading setup script"
-curl -Lo /mnt/tmp/setup.sh https://raw.githubusercontent.com/soaresluciano/arch/refs/heads/main/setup.sh && chmod +x /mnt/tmp/setup.sh
-
 echo "----------------------------------------"
 echo ":: Done!"
 echo "- You can execute:"
 echo  -e "${GREEN}arch-chroot /mnt${NC}"
 echo "- and then you can run the setup script with:"
-echo "./tmp/setup.sh"
+echo "${GREEN}curl -Lo /tmp/setup.sh https://bit.ly/4nlB3h1 && chmod +x /tmp/setup.sh && ./tmp/setup.sh${NC}"
