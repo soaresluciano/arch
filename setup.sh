@@ -27,11 +27,10 @@ function prompt_with_default() {
 
     read -p "$prompt_message (Press enter for default: '$default_value'): " user_input
     if [ -z "$user_input" ]; then
-        user_input="$default_value"
-        echo "Using default: $user_input"
+        echo "$default_value"
+    else
+        echo "$user_input"
     fi
-    
-    echo "$user_input"
 }
 
 # 3.3 - Time
