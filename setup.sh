@@ -35,8 +35,10 @@ function prompt_with_default() {
 }
 
 # 3.3 - Time
+new_step "Setting timezone"
 zoneinfo=$(prompt_with_default "Enter your timezone" "Europe/Amsterdam")
-ln -sf /usr/share/zoneinfo/$zoneinfo /etc/localtime
+
+ln -sf "/usr/share/zoneinfo/$zoneinfo" /etc/localtime
 hwclock --systohc
 
 # 3.4 - Localization
