@@ -1,4 +1,4 @@
-1. install script: `curl -L -O https://rb.gy/czsjwb`
+1. install script: `curl -L -O https://bit.ly/4nlB3h1`
 2. setup script
 3. reboot
 4. config network: `ntui`
