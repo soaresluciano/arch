@@ -1,17 +1,29 @@
 #!/bin/bash
 set -e
 
+# Color output for better visibility
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
+function new_step() {
+    echo "----------------------------------------"
+    echo -e "${YELLOW}$1${NC}"
+    echo "----------------------------------------"
+    #pause
+}
+
 # 2.1 Select the mirrors
-echo ":: Creating mirrorlist"
+new_step "Creating mirrorlist"
 reflector --protocol http,https --latest 200 --sort rate --country France,German,Belgium,Netherlands --save /etc/pacman.d/mirrorlist
 
 # 2.2 Install essential packages
-echo ":: Installing essential packages"
+new_step "Installing essential packages"
 
 echo "What is your CPU brand?"
+echo "Info found:" && lscpu | grep "Model name:"
 echo "  1. AMD | 2. Intel"
-echo "Info found:"
-lscpu | grep "Model name:"
 read -p "Select a number: " choice
 case "$choice" in
     1 )
@@ -57,12 +69,16 @@ fi
 pacstrap -K /mnt "${packages[@]}"
 
 # 3.1 Fstab
-echo ":: Creating fstab"
+new_step "Creating fstab"
 genfstab -U /mnt >> /mnt/etc/fstab
+
+# 3.2 Download setup script for chroot environment
+new_step "Downloading setup script"
+curl -Lo /mnt/tmp/setup.sh https://raw.githubusercontent.com/soaresluciano/arch/refs/heads/main/setup.sh && chmod +x /mnt/tmp/setup.sh
 
 echo "----------------------------------------"
 echo ":: Done!"
 echo "- You can execute:"
-echo "arch-chroot /mnt"
-echo "- and then you can proceed with the setup script using:"
-echo "curl -Lo setup.sh https://bit.ly/4nlB3h1 && chmod +x setup.sh"
+echo  -e "${GREEN}arch-chroot /mnt${NC}"
+echo "- and then you can run the setup script with:"
+echo "./tmp/setup.sh"
