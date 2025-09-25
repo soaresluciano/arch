@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # https://wiki.archlinux.org/title/Installation_guide
 
