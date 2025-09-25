@@ -144,7 +144,7 @@ df -h /mnt /mnt/boot
 
 # scripts
 curl -L -O https://raw.githubusercontent.com/soaresluciano/arch/refs/heads/main/install.sh
-chmod +x install.sh
 curl -L -O https://raw.githubusercontent.com/soaresluciano/arch/refs/heads/main/setup.sh
+chmod +x install.sh
 chmod +x setup.sh
 
