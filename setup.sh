@@ -45,7 +45,7 @@ hwclock --systohc
 new_step "Generating locales"
 
 locale=$(prompt_with_default "Enter your locale" "en_IE.UTF-8")
-sed -i "s/#$locale/$locale/" /etc/locale.gen
+sed -i "s|#$locale|$locale|" /etc/locale.gen
 locale-gen
 echo "LANG=$locale" > /etc/locale.conf
 
