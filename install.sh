@@ -2,13 +2,13 @@
 set -e
 
 # 2.1 Select the mirrors
-echo -n ":: Creating mirrorlist"
+echo ":: Creating mirrorlist"
 reflector --protocol http,https --latest 200 --sort rate --country France,German,Belgium,Netherlands --save /etc/pacman.d/mirrorlist
 
 # 2.2 Install essential packages
-echo -n ":: Installing essential packages"
+echo ":: Installing essential packages"
 
-echo -n "What is your CPU brand?"
+echo "What is your CPU brand?"
 echo "  1. AMD | 2. Intel"
 echo "Info found:"
 lscpu | grep "Model name:"
@@ -57,11 +57,12 @@ fi
 pacstrap -K /mnt "${packages[@]}"
 
 # 3.1 Fstab
-echo -n ":: Creating fstab"
+echo ":: Creating fstab"
 genfstab -U /mnt >> /mnt/etc/fstab
 
-echo -n ":: Done!"
-echo -n "- You can execute:"
-echo -n "arch-chroot /mnt"
-echo -n ""
-echo -n "- and then you can proceed with the setup script"
+echo "----------------------------------------"
+echo ":: Done!"
+echo "- You can execute:"
+echo "arch-chroot /mnt"
+echo "- and then you can proceed with the setup script using:"
+echo "curl -Lo setup.sh https://bit.ly/4nlB3h1 && chmod +x setup.sh"

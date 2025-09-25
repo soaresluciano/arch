@@ -144,7 +144,12 @@ df -h /mnt /mnt/boot
 
 # scripts
 curl -L -O https://raw.githubusercontent.com/soaresluciano/arch/refs/heads/main/install.sh
-curl -L -O https://raw.githubusercontent.com/soaresluciano/arch/refs/heads/main/setup.sh
 chmod +x install.sh
-chmod +x setup.sh
 
+# Execute the installation script
+read -p "Would you like to execute the installation script? (y/N): " choice
+if [[ "$choice" == [yY] ]]; then
+    ./install.sh
+else
+    echo "Installation script not executed."
+fi
