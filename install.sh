@@ -10,6 +10,8 @@ echo -n ":: Installing essential packages"
 echo -n "What is your CPU brand?"
 echo "  1. AMD"
 echo "  2. Intel"
+echo "Info found:"
+lscpu | grep "Model name:"
 read -p ": " choice
 case "$choice" in
     1 )
