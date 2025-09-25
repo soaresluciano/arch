@@ -99,3 +99,5 @@ sudo pacman -S --color always --needed "${packages[@]}"
 sudo systemctl enable ly.service
 # Disable getty@tty2 to prevent conflicts with ly display manager
 systemctl disable getty@tty2.service
+
+chezmoi init soaresluciano && chezmoi apply
