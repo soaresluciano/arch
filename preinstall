@@ -89,12 +89,12 @@ parted -s ${DISK} mklabel gpt
 
 # Create EFI System Partition (1GB)
 echo "Creating EFI System Partition (${EFI_SIZE})..."
-parted -s ${DISK} mkpart "EFI System Partition" fat32 1MiB ${EFI_SIZE}
+parted -s ${DISK} mkpart fat32 1MiB ${EFI_SIZE}
 parted -s ${DISK} set 1 esp on
 
 # Create Linux root partition (remaining space)
 echo "Creating Linux root partition..."
-parted -s ${DISK} mkpart "Linux Root" ext4 ${EFI_SIZE} 100%
+parted -s ${DISK} mkpart ext4 ${EFI_SIZE} 100%
 
 # Force kernel to re-read partition table
 echo "Re-reading partition table..."
