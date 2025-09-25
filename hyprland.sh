@@ -1,10 +1,11 @@
 #!/bin/bash
+set -e
 
 sys_pkgs=(
-   flatpak
-   fwupd
-   openssh
-   reflector
+    flatpak
+    fwupd
+    openssh
+    reflector
 )
 
 session_pkgs=(
@@ -76,14 +77,14 @@ filesystem_pkgs=(
 network_pkgs=(
     network-manager-applet
     uwf
-    guwf
+    gufw
 )
 
 packages=(
     "${sys_pkgs[@]}" 
-    "${sessio_pkgs[@]}"
+    "${session_pkgs[@]}"
     "${hyper_pkgs[@]}" 
-    "${hyper_apps[@]}" 
+    "${hypr_apps[@]}" 
     "${basic_apps[@]}" 
     "${gtk_pkgs[@]}" 
     "${qt_pkgs[@]}" 
@@ -98,4 +99,5 @@ sudo pacman -S --color always --needed "${packages[@]}"
 
 # Enable ly
 sudo systemctl enable ly.service
+# Disable getty@tty2 to prevent conflicts with ly display manager
 systemctl disable getty@tty2.service
