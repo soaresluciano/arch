@@ -87,7 +87,7 @@ systemctl enable NetworkManager
 # 3.8 - Boot loader
 new_step "Installing and configuring GRUB bootloader"
 echo "Make sure your EFI System Partition (ESP) is mounted at /boot or /boot/efi before proceeding."
-esp_mounted=$(prompt_with_default "Is your ESP mounted at /boot (or /boot/efi)?" "n")
+esp_mounted=$(prompt_with_default "Is your ESP mounted at /boot (or /boot/efi)? [y/N]" "n")
 if [[ "$esp_mounted" == "y" || "$esp_mounted" == "Y" ]]; then
     # Install GRUB to the ESP, create boot entry "GRUB"
     EFI_DIR=$(prompt_with_default "Enter your EFI directory" "/boot")
