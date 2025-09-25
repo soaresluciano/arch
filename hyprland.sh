@@ -42,7 +42,6 @@ gtk_pkgs=(
 
 qt_pkgs=(
     hyprland-qt-support
-    hyprqt6engine
     qt6-multimedia-ffmpeg
     kvantum
 )
