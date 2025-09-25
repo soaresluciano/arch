@@ -9,6 +9,6 @@
 9. hyprland-config script
 
 # short urls
-pre-insatll: `curl -L -O https://bit.ly/46F9cBk`
-install: `curl -L -O https://bit.ly/3Kj7iyQ`
-setup: `curl -L -O https://bit.ly/4nlB3h1`
+- pre-insatll: `curl -L -O https://bit.ly/46F9cBk`
+- install: `curl -L -O https://bit.ly/3Kj7iyQ`
+- setup: `curl -L -O https://bit.ly/4nlB3h1`
