@@ -17,15 +17,18 @@ hyper_pkgs=(
     hyprland
     xdg-desktop-portal-hyprland
     hyprpolkitagent
+    hyprpaper
+    hyprlock
+    hypridle
 )
 
-hypr_apps=(
+core_apps=(
     waybar
     kitty
     wofi
     nemo
-    hyprpaper
     swaync
+    grim
 )
 
 basic_apps=(
@@ -73,6 +76,12 @@ filesystem_pkgs=(
     udiskie
 )
 
+printer_pkgs=(
+    cups
+    cups-pdf
+    system-config-printer
+)
+
 network_pkgs=(
     network-manager-applet
     gufw
@@ -82,7 +91,7 @@ packages=(
     "${sys_pkgs[@]}" 
     "${session_pkgs[@]}"
     "${hyper_pkgs[@]}" 
-    "${hypr_apps[@]}" 
+    "${core_apps[@]}" 
     "${basic_apps[@]}" 
     "${gtk_pkgs[@]}" 
     "${qt_pkgs[@]}" 
@@ -90,6 +99,7 @@ packages=(
     "${sound_pkgs[@]}" 
     "${bluetooth_pkgs[@]}" 
     "${filesystem_pkgs[@]}" 
+    "${printer_pkgs[@]}"
     "${network_pkgs[@]}"
 )
 

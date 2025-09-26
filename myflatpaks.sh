@@ -4,6 +4,7 @@ flatpaks=(
   cc.arduino.IDE2
   com.anydesk.Anydesk
   com.heroicgameslauncher.hgl
+  com.interversehq.qView
   com.usebottles.bottles
   com.github.tchx84.Flatseal
   ua.org.brezblock.q4wine

@@ -59,6 +59,8 @@ before_reboot_pkgs=(
     man-db
     man-pages
     git
+    openssh
+    vim
 )
 
 packages=("${mandatory_pkgs[@]}" "${before_reboot_pkgs[@]}")
