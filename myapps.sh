@@ -8,16 +8,23 @@ packages=(
   clamav
   diffuse
   firefox
-  geany
+  flameshot
+  gnome-calculator
   gnome-firmware
+  gnome-software
+  gnome-system-monitor
+  gnome-text-editor
+  gparted
   lazygit
   libreoffice-still
   obsidian
   rclone
   remmina
+  steam
   tailscale
   vlc
   wine
+  zathura-pdf-poppler
 )
 
 for pkg in "${packages[@]}"; do
