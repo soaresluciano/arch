@@ -7,6 +7,7 @@ packages=(
   btop
   clamav
   diffuse
+  fastfetch
   firefox
   flameshot
   gnome-calculator
