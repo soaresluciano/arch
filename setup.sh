@@ -10,27 +10,27 @@ YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
 function pause() {
-    echo "Press any key to continue..."
-    read -n 1 -s
+  echo "Press any key to continue..."
+  read -n 1 -s
 }
 
 function new_step() {
-    echo "----------------------------------------"
-    echo -e "${YELLOW}$1${NC}"
-    echo "----------------------------------------"
-    #pause
+  echo "----------------------------------------"
+  echo -e "${YELLOW}$1${NC}"
+  echo "----------------------------------------"
+  #pause
 }
 
 function prompt_with_default() {
-    local prompt_message="$1"
-    local default_value="$2"
+  local prompt_message="$1"
+  local default_value="$2"
 
-    read -p "$prompt_message (Press enter for default: '$default_value'): " user_input
-    if [ -z "$user_input" ]; then
-        echo "$default_value"
-    else
-        echo "$user_input"
-    fi
+  read -p "$prompt_message (Press enter for default: '$default_value'): " user_input
+  if [ -z "$user_input" ]; then
+    echo "$default_value"
+  else
+    echo "$user_input"
+  fi
 }
 
 # 3.3 - Time
@@ -47,23 +47,34 @@ locale=$(prompt_with_default "Enter your locale" "en_IE.UTF-8")
 echo "Selected locale: '$locale'"
 sed -i "s|^#$locale|$locale|" /etc/locale.gen
 locale-gen
-echo "LANG=$locale" > /etc/locale.conf
+echo "LANG=$locale" >/etc/locale.conf
 
 # 3.5 - Network configuration
 new_step "Configuring network"
 hostname=$(prompt_with_default "Enter your hostname" "archlinux")
-echo "$hostname" > /etc/hostname
+echo "$hostname" >/etc/hostname
 
 # EXTRA - Install necessary packages
 new_step "Installing necessary packages"
 
 boot_manager_pkgs=(
-    grub
-    efibootmgr
-    os-prober
+  grub
+  efibootmgr
+  os-prober
 )
 
 sudo pacman -S --color always --needed "${boot_manager_pkgs[@]}"
+
+pkgs=(
+  reflector
+  rsync
+  man-db
+  man-pages
+  git
+  openssh
+)
+
+sudo pacman -S --color always --needed "${pkgs[@]}"
 
 # 3.5 - Root password
 new_step "Setting root password"
@@ -89,20 +100,20 @@ new_step "Installing and configuring GRUB bootloader"
 echo "Make sure your EFI System Partition (ESP) is mounted at /boot or /boot/efi before proceeding."
 esp_mounted=$(prompt_with_default "Is your ESP mounted at /boot (or /boot/efi)? [y/N]" "n")
 if [[ "$esp_mounted" == "y" || "$esp_mounted" == "Y" ]]; then
-    # Install GRUB to the ESP, create boot entry "GRUB"
-    EFI_DIR=$(prompt_with_default "Enter your EFI directory" "/boot")
-    grub-install --target=x86_64-efi --efi-directory="$EFI_DIR" --bootloader-id=GRUB
+  # Install GRUB to the ESP, create boot entry "GRUB"
+  EFI_DIR=$(prompt_with_default "Enter your EFI directory" "/boot")
+  grub-install --target=x86_64-efi --efi-directory="$EFI_DIR" --bootloader-id=GRUB
 
-    # Enable os-prober in GRUB configuration so Windows is detected
-    if ! grep -q "^GRUB_DISABLE_OS_PROBER=false" /etc/default/grub; then
-        echo "GRUB_DISABLE_OS_PROBER=false" >> /etc/default/grub
-    fi
+  # Enable os-prober in GRUB configuration so Windows is detected
+  if ! grep -q "^GRUB_DISABLE_OS_PROBER=false" /etc/default/grub; then
+    echo "GRUB_DISABLE_OS_PROBER=false" >>/etc/default/grub
+  fi
 
-    # Generate GRUB config (includes Windows if detected)
-    grub-mkconfig -o /boot/grub/grub.cfg
+  # Generate GRUB config (includes Windows if detected)
+  grub-mkconfig -o /boot/grub/grub.cfg
 else
-    echo "Please mount your EFI System Partition and try again."
-    exit 1
+  echo "Please mount your EFI System Partition and try again."
+  exit 1
 fi
 
 # 4 - Reboot

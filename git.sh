@@ -8,7 +8,7 @@ echo -n "Please enter your e-mail: "
 read email
 git config --global user.email "$email"
 
-git config --global core.editor "vim"
+git config --global core.editor "nvim"
 
 echo -n "Which type of key do you want to generate? (ed25519/rsa) "
 read keytype
@@ -26,4 +26,3 @@ exec ssh-agent bash
 ssh-add ~/.ssh/id_$keytype
 
 cat ~/.ssh/id_$keytype.pub
-

@@ -2,30 +2,28 @@
 
 packages=(
   7zip
+  bat
   bitwarden
   bleachbit
   btop
   clamav
   diffuse
+  exa
   fastfetch
   firefox
   flameshot
-  gnome-calculator
+  fzf
   gnome-firmware
-  gnome-software
-  gnome-system-monitor
-  gnome-text-editor
-  gparted
   lazygit
   libreoffice-still
   obsidian
   rclone
   remmina
   steam
+  seahorse
   tailscale
   vlc
   wine
-  zathura-pdf-poppler
 )
 
 for pkg in "${packages[@]}"; do
