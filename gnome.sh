@@ -1,1 +1,1 @@
-pacman -S gnome gnome-tweaks gnome-browser-connector
+pacman -S gnome gnome-tweaks gnome-browser-connector ufw
