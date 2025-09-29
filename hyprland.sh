@@ -110,4 +110,4 @@ sudo systemctl enable ly.service
 # Disable getty@tty2 to prevent conflicts with ly display manager
 systemctl disable getty@tty2.service
 
-chezmoi init soaresluciano && chezmoi apply
+systemctl --user enable --now hyprpolkitagent.service
