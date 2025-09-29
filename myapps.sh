@@ -14,6 +14,7 @@ packages=(
   flameshot
   fzf
   gnome-firmware
+  ghostty
   lazygit
   libreoffice-still
   obsidian
