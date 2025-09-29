@@ -4,8 +4,6 @@ set -e
 sys_pkgs=(
     flatpak
     fwupd
-    openssh
-    reflector
 )
 
 session_pkgs=(
@@ -31,13 +29,6 @@ core_apps=(
     grim
 )
 
-basic_apps=(
-    bat
-    chezmoi
-    exa
-    fzf
-)
-
 gtk_pkgs=(
     adw-gtk-theme
     nwg-look
@@ -52,7 +43,6 @@ qt_pkgs=(
 keyring_pkgs=(
     libsecret
     gnome-keyring
-    seahorse
 )
 
 sound_pkgs=(
