@@ -16,7 +16,6 @@ pkgs=(
   cups-pdf
   system-config-printer
   nss-mdns
-  chezmoi
 )
 
 sudo pacman -S --color always --needed "${pkgs[@]}"
