@@ -10,7 +10,6 @@ flatpaks=(
   net.davidotek.pupgui2
   org.keystore_explorer.KeyStoreExplorer
   org.localsend.localsend_app
-  com.visualstudio.code
 )
 
 for flatpak in "${flatpaks[@]}"; do
