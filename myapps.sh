@@ -13,15 +13,12 @@ packages=(
   firefox
   flameshot
   fzf
-  gnome-firmware
-  ghostty
   lazygit
   libreoffice-still
   obsidian
   rclone
   remmina
   steam
-  seahorse
   tailscale
   vlc
   wine

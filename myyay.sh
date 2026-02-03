@@ -1,7 +1,6 @@
 #!/bin/bash
 
 pgks=(
-  gdm-settings
   visual-studio-code-bin
 )
 
