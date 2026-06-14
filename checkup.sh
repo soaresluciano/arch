@@ -381,6 +381,34 @@ else
      Example: UUID=xxxx  /  ext4  defaults,noatime  0 1"
 fi
 
+# SMART drive health
+if command -v smartctl &>/dev/null; then
+    for disk in /dev/sd? /dev/nvme?n?; do
+        [[ -b "$disk" ]] || continue
+        health=$(sudo smartctl -H "$disk" 2>/dev/null | grep -iE "overall-health|SMART Health Status" | sed 's/.*: *//')
+        if [[ -z "$health" ]]; then
+            warn "SMART $disk: status unavailable (USB enclosure or unsupported device)"
+        elif echo "$health" | grep -qi "PASS\|OK"; then
+            ok "SMART $disk: $health"
+            explain "The drive's self-assessment reports healthy — no failure predicted right now."
+        else
+            fail "SMART $disk: $health — drive failure predicted"
+            explain "The drive itself is reporting it expects to fail. Back up immediately."
+            add_issue "SMART reports $disk as failing ('$health')
+     Why: the drive's own firmware predicts imminent failure — data loss risk is real
+     Fix: back up irreplaceable data now, then plan to replace the drive
+     Detail: sudo smartctl -a $disk   (check Reallocated_Sector_Ct, Media_Wearout, etc.)"
+        fi
+    done
+else
+    warn "smartmontools not installed — cannot check drive health"
+    explain "smartctl reads a drive's built-in failure-prediction data (SMART) so you get warning before a disk dies."
+    add_issue "smartmontools not installed — no drive failure monitoring
+     Why: SMART data lets you catch a dying disk before it takes your data with it
+     Fix: sudo pacman -S smartmontools
+     Optional: sudo systemctl enable --now smartd.service   (background monitoring + alerts)"
+fi
+
 # ─── GPU ──────────────────────────────────────────────────────────────────────
 section "GPU"
 
@@ -637,6 +665,72 @@ else
      Why: package updates shipped new default configs; ignoring them means missing changes or breakage
      Fix: sudo pacdiff   (interactive merge tool from the pacman-contrib package)
      Manual: compare each with: diff /etc/<file> /etc/<file>.pacnew"
+fi
+
+# Orphaned packages
+ORPHANS=$(pacman -Qtdq 2>/dev/null)
+ORPHAN_COUNT=$(printf '%s\n' "$ORPHANS" | grep -c .)
+if [[ "$ORPHAN_COUNT" -eq 0 ]]; then
+    ok "No orphaned packages"
+    explain "No leftover dependencies that nothing needs anymore — your package set is tidy."
+else
+    warn "$ORPHAN_COUNT orphaned package(s) — installed as deps, no longer required by anything"
+    explain "Orphans are packages pulled in as dependencies whose parent has since been removed."
+    explain "They take up space and add update churn for no benefit. Safe to remove if you don't use them directly."
+    add_issue "$ORPHAN_COUNT orphaned package(s) installed
+     Why: dependencies left behind after their parent package was removed — pure cruft
+     Fix: review first with: pacman -Qtdq
+     Remove all: sudo pacman -Rns \$(pacman -Qtdq)"
+fi
+
+# Pacman package cache size
+if [[ -d /var/cache/pacman/pkg ]]; then
+    CACHE_SIZE_KB=$(du -sk /var/cache/pacman/pkg 2>/dev/null | awk '{print $1}')
+    CACHE_SIZE_H=$(du -sh /var/cache/pacman/pkg 2>/dev/null | awk '{print $1}')
+    if systemctl is-enabled paccache.timer &>/dev/null; then
+        ok "Pacman cache: $CACHE_SIZE_H (paccache.timer enabled — trimmed automatically)"
+        explain "paccache keeps the last few versions of each package and prunes the rest on a timer."
+    elif [[ "${CACHE_SIZE_KB:-0}" -gt 5242880 ]]; then
+        warn "Pacman cache: $CACHE_SIZE_H — large and not auto-cleaned"
+        explain "Every package you've ever installed or updated is kept here. It grows without bound unless"
+        explain "you prune it. Keeping a couple of versions lets you downgrade; the rest is just wasted disk."
+        add_issue "Pacman cache is large ($CACHE_SIZE_H) and not auto-pruned
+     Why: old package versions accumulate forever, wasting disk you could reclaim
+     Fix (one-off): sudo paccache -r   (keeps the last 3 versions)
+     Permanent: sudo pacman -S pacman-contrib && sudo systemctl enable --now paccache.timer"
+    else
+        ok "Pacman cache: $CACHE_SIZE_H"
+        explain "Reasonable size. Enable paccache.timer if you want it trimmed automatically over time."
+    fi
+fi
+
+# Systemd journal size
+JOURNAL_USAGE=$(journalctl --disk-usage 2>/dev/null | grep -oE "[0-9.]+[KMGTB]" | tail -1)
+if grep -rhqs "^SystemMaxUse=" /etc/systemd/journald.conf /etc/systemd/journald.conf.d/ 2>/dev/null; then
+    ok "Journal: size-capped (SystemMaxUse set)${JOURNAL_USAGE:+ — currently $JOURNAL_USAGE}"
+    explain "An explicit cap keeps the journal from growing into the gigabytes over time."
+else
+    warn "Journal: no explicit SystemMaxUse cap${JOURNAL_USAGE:+ — currently $JOURNAL_USAGE}"
+    explain "By default journald caps at 10% of the filesystem, which can be many gigabytes on a large disk."
+    explain "Setting an explicit limit keeps logs bounded and frees space for what matters."
+    add_issue "No explicit journal size cap (SystemMaxUse)
+     Why: the default 10%-of-disk cap can grow into gigabytes of logs you rarely need
+     Fix: echo 'SystemMaxUse=500M' | sudo tee /etc/systemd/journald.conf.d/00-size.conf
+          sudo systemctl restart systemd-journald
+     One-off trim now: sudo journalctl --vacuum-size=500M"
+fi
+
+# Boot time (informational)
+if command -v systemd-analyze &>/dev/null; then
+    BOOT_TIME=$(systemd-analyze 2>/dev/null | head -1)
+    if [[ -n "$BOOT_TIME" ]]; then
+        info "$BOOT_TIME"
+        explain "Slowest units this boot:"
+        systemd-analyze blame 2>/dev/null | head -3 | while read -r line; do
+            explain "  $line"
+        done
+        explain "Investigate a slow unit with: systemd-analyze blame  /  systemctl status <unit>"
+    fi
 fi
 
 # ─── MAKEPKG ──────────────────────────────────────────────────────────────────
